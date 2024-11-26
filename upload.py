@@ -8,7 +8,7 @@ from datetime import datetime
 import concurrent.futures
 from tqdm import tqdm
 
-input_folder = join('data', 'transfert20241126')
+input_folder = join('data', 'transfert')
 prefix = '/home/kibini/bnr'
 
 USER = 'user_rw'
