@@ -20,6 +20,7 @@ rbx_client = Rbx_client(user=USER)
 def get_files2upload(data_file_path, rbx_client, bucket, prefix):
     files2upload = []
 
+    #print(data_file_path)
     data2upload = pd.read_csv(data_file_path)
     for file in data2upload.to_dict(orient='records'):
         file_path = file['path'].replace("/", sep)
@@ -77,9 +78,10 @@ def rbx_upload_file(file_data):
 files2proceed = []
 for dir_path, dirs, files in walk(input_folder):
     for file in files:
-        file_path = join(dir_path, file)
-        filename = splitext(file)[0]
-        files2proceed.append([file_path, filename])
+        if file != '.gitkeep':
+            file_path = join(dir_path, file)
+            filename = splitext(file)[0]
+            files2proceed.append([file_path, filename])
 
 for file_info in files2proceed:
     data_file_name = file_info[1]
